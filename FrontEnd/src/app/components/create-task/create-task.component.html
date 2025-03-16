@@ -1,0 +1,32 @@
+<form [formGroup]="taskForm">
+    <h2 class="center" style="font-size: 25px;" mat-dialog-title>Crear Tarea</h2>
+    <mat-dialog-content>
+        <div class="col s12" style="margin-top: 20px">
+            <div class="col s6" style="text-align:center; margin-top:30px">
+                Titulo
+            </div>
+            <div class="input-field col s4" style="margin-right: 20px">
+                <input placeholder="Titulo" type="text" formControlName="title" matInput />
+            </div>
+        </div>
+        <div class="col s12" style="margin-top: 20px">
+            <div class="col s6" style="text-align:center; margin-top:30px">
+                Descripción
+            </div>
+            <div class="input-field col s4" style="margin-right: 20px">
+                <input placeholder="Descripción" type="text" formControlName="description" matInput />
+            </div>
+        </div>
+        <div class="col s12 center" style="margin-top: 20px">
+            <div class="input-field col s4" style="margin-right: 20px">
+                <mat-checkbox style="color: green;" formControlName="state">¿Esta completado?</mat-checkbox>
+            </div>
+        </div>
+        <div class="center">
+            <button class="btn waves-effect waves-light" (click)="crear()">{{data ? 'Editar' : 'Crear'}}</button>
+        </div>
+        <div class="col s12" style="margin-top: 20px;" *ngIf="error">
+            <p class="center" style="color: red; font-size: 17px;"><strong>Error al crear la tarea, asegurese de llenar todos los campos del formulario</strong></p>
+        </div>
+    </mat-dialog-content>
+</form>

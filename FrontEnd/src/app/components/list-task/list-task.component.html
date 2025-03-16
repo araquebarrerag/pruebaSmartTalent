@@ -1,0 +1,50 @@
+<div *ngIf="!load">
+    <div class="spinner center">
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />
+    </div>
+    <div class="center">
+        <p style="font-size: 30px;">Cargando Datos</p>
+    </div>
+</div>
+<div *ngIf="load">
+    <h1 class="center">Tareas</h1>
+    <form [formGroup]="taskForm">
+        <div class="col s12 bluey-grey lighten-5">
+            <div class="input-field col s4">
+                <mat-form-field>
+                    <mat-label>Filtrar tarea por estado</mat-label>
+                    <mat-select (valueChange)="loadTasks($event)">
+                        <mat-option style="background-color: white;" [value]="2">Todos</mat-option>
+                        <mat-option style="background-color: white;" [value]="0">Pendiente</mat-option>
+                        <mat-option style="background-color: white;" [value]="1">Completado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col s4"></div>
+            <div class=" col s4">
+                <button class="btn waves-effect waves-light" style="margin-top: 15px;" (click)="openDialog()">Crear nueva tarea</button>
+            </div>
+        </div>
+        <table class="responsive-table centered">
+            <thead class="btn-primary">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody title="tareas">
+                <tr *ngFor="let task of tasks">
+                    <td>{{task.title}}</td>
+                    <td>{{task.description}}</td>
+                    <td><i class="small material-icons {{!task.state ? 'red-text text-darken-3' : 'green-text text-darken-3'}}">{{task.state ? "check_circle" : "do_not_disturb_on"}}</i></td>
+                    <td>
+                        <a class="waves-effect waves-light red btn" (click)="delete(task)"><i class="material-icons center">delete</i></a>
+                        <a class="waves-effect waves-light green btn" style="margin-left: 5px;" (click)="edit(task)"><i class="material-icons center">edit</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
