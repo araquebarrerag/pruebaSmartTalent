@@ -1,3 +1,11 @@
+# Descargar repositorio
+
+Para poder descargar el repositorio en su maquina vamos a ejecutar el siguiete comando en la carpeta donde se va a alojar el repositorio
+
+```bash
+git clone https://github.com/araquebarrerag/pruebaSmartTalent.git
+```
+
 # FrontEnd
 
 Este proyecto en la parte de front fue realizado usando [Angular CLI] en la version version 19.2.3.
